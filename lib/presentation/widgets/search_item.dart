@@ -15,7 +15,7 @@ class SearchItem extends StatelessWidget {
       onTap: () => _showBottomSheet(context),
       child: Container(
         margin: const EdgeInsets.all(4.0),
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
@@ -23,52 +23,55 @@ class SearchItem extends StatelessWidget {
             width: 2,
           ),
         ),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AutoSizeText(
-                merchant.name,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: AutoSizeText(
-                  merchant.category,
-                  maxLines: 1,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AutoSizeText(
+                  merchant.name,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 15,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-              ),
-              BlocBuilder<SearchBloc, SearchState>(
-                builder: (context, state) {
-                  final isFav = state.isFavorite(merchant.id);
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: isFav
-                        ? const Icon(
-                            Icons.favorite,
-                            size: 30,
-                            color: Colors.red,
-                          )
-                        : const Icon(
-                            Icons.favorite_border,
-                            size: 30,
-                            color: Colors.black,
-                          ),
-                  );
-                },
-              ),
-            ],
-          ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: AutoSizeText(
+                    merchant.category,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 13,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            BlocBuilder<SearchBloc, SearchState>(
+              builder: (context, state) {
+                final isFav = state.isFavorite(merchant.id);
+                return Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: isFav
+                      ? const Icon(
+                          Icons.favorite,
+                          size: 30,
+                          color: Colors.red,
+                        )
+                      : const Icon(
+                          Icons.favorite_border,
+                          size: 30,
+                          color: Colors.black,
+                        ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

@@ -18,30 +18,28 @@ class FavItem extends StatelessWidget {
           width: 2,
         ),
       ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AutoSizeText(
-              item.merchant,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          AutoSizeText(
+            item.merchant,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Icon(
-                Icons.favorite,
-                size: 30,
-                color: Colors.red,
-              ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: Icon(
+              Icons.favorite,
+              size: 30,
+              color: Colors.red,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
